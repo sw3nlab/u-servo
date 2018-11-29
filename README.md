@@ -10,6 +10,6 @@ and
 
 This HW 16-ch i2c servo driver:
 
-![image](https://github.com/sw3nlab/u-servo/blob/master/img.jpg)
+![image](https://github.com/sw3nlab/u-servo/blob/master/img.png)
 
 
