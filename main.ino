@@ -75,7 +75,7 @@ command[1] - позиция сервы может принимать значе�
    
 else if(cmd.substring(0, 4)=="cntr")
               {
-                Serial.print("Calibrate function\nMove all se to center position\n\n");
+                Serial.print("Calibrate function\nMove all se to center position\r\n");
                 int i = 0;
                 for(i=0;i<=15;i++){
                           pwm.setPWM(i,0,300);
@@ -84,7 +84,7 @@ else if(cmd.substring(0, 4)=="cntr")
                           Serial.println(" - position 300 ok");
                           delay(700);
                               }
-                Serial.println("Calibration complete.");
+                Serial.println("\r\nCalibration complete.");
               
               }
    
@@ -92,7 +92,7 @@ else if(cmd.substring(0, 4)=="cntr")
    
                 else
                 {
-                    Serial.println("incorrect Command!\n\nUse: send ch,position - for send command\nor\ncntr - for calibrate");
+                    Serial.println("incorrect Command!\r\nUse: send ch,position - for send command\r\nor\r\ncntr - for calibrate");
                     Serial.println();
                  }
     } 
