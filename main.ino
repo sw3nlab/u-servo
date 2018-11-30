@@ -1,6 +1,9 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
+/*
+Эти define значения согласно китайской документации к серводвигателям MG996R 
+*/
 #define SERVOMIN 500// 150 // this is the 'minimum' pulse length count (out of 4096)
 #define SERVOMAX 2500// 600 // this is the 'maximum' pulse length count (out of 4096)
 
@@ -26,7 +29,7 @@ void loop() {
                                     char inChar = Serial.read();
                                     cmd += inChar;
                                }
-/*START MAIN Section*/
+//Начало главной секции
    
               if(cmd.substring(0, 4)=="send")
               {
@@ -36,6 +39,11 @@ void loop() {
                   code.toCharArray(data,30);
                   int i = 0;
                   String command[10] = {};
+                
+/*
+Костыль на преобразовании string command[] в int !
+*/
+                
                   char *p = data;
                   char *str;
                       while ((str = strtok_r(p, ",", &p)) != NULL) {
@@ -46,16 +54,24 @@ void loop() {
                 Serial.print(command[0].toInt());
                 Serial.print(" take position ");
                 Serial.println(command[1].toInt());
+                
+/*
+В этом месте нет проверки входящих значений !
+command[0] - номер канала в зависимотси от HW серво-драйвера может иметь значения от 0 до 15
+command[1] - позиция сервы может принимать значения от ~125 до ~600 в зависимости от типа серводвигателя.
+*/
+                
                 pwm.setPWM(command[0].toInt(),0,command[1].toInt());
                 Serial.println("OK");
                 Serial.println();
                 delay(700);
               }
 
-/*END MAIN Section*/
+//Конец главной секции
    
+   /*-------------------------------------------------------------------*/
    
-/*START Calibrate section*/
+//Начало секции калибровки
    
 else if(cmd.substring(0, 4)=="cntr")
               {
@@ -72,7 +88,8 @@ else if(cmd.substring(0, 4)=="cntr")
               
               }
    
-/*END Calibrate section*/                              
+//Конец секции калибровки
+   
                 else
                 {
                     Serial.println("incorrect Command!\n\nUse: send ch,position - for send command\nor\ncntr - for calibrate");
