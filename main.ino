@@ -12,7 +12,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("u-Servo ready !");
   pwm.begin();
-  pwm.setPWMFreq(60);
+  pwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
   delay(10);
 }
 
@@ -26,7 +26,8 @@ void loop() {
                                     char inChar = Serial.read();
                                     cmd += inChar;
                                }
-
+/*START MAIN Section*/
+   
               if(cmd.substring(0, 4)=="send")
               {
                   String  code = cmd.substring(4);
@@ -51,16 +52,30 @@ void loop() {
                 delay(700);
               }
 
-else if(cmd.substring(0, 4)=="help")
+/*END MAIN Section*/
+   
+   
+/*START Calibrate section*/
+   
+else if(cmd.substring(0, 4)=="cntr")
               {
-                Serial.print("u-servo help:\n\n[send command to servo]\nsend 0,300\n^cmd ^ch,^position\n\n");
-                Serial.println("[u-servo source code]\nhttps://github.com/sw3nlab/u-servo");
-                Serial.println();
+                Serial.print("Calibrate function\nMove all se to center position\n\n");
+                int i = 0;
+                for(i=0;i<=15;i++){
+                          pwm.setPWM(i,0,300);
+                          Serial.print("CH: ");
+                          Serial.print(i);
+                          Serial.println(" - position 300 ok");
+                          delay(700);
+                              }
+                Serial.println("Calibration complete.");
+              
               }
-                                
+   
+/*END Calibrate section*/                              
                 else
                 {
-                    Serial.println("incorrect Command!\nuse help");
+                    Serial.println("incorrect Command!\n\nUse: send ch,position - for send command\nor\ncntr - for calibrate");
                     Serial.println();
                  }
     } 
