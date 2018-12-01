@@ -40,9 +40,11 @@ for calibrate all servo ch use this command:
 `echo "cntr">/dev/ttyUSB@|cat /dev/ttyUSB@` <-- all servos will take position 300
 
 **Android app**:
+
 https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
 
 Video demonstration (OpenWRT + u-servo):
+
 https://www.youtube.com/watch?v=p_3rx9Ga9Vs
 
 
