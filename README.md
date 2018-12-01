@@ -37,7 +37,7 @@ send command like this:
 
 for calibrate all servo ch use this command:
 
-`cntr` <-- all servos will take position 300
+`echo "cntr">/dev/ttyUSB@|cat /dev/ttyUSB@` <-- all servos will take position 300
 
 **Android app**:
 https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
