@@ -21,7 +21,7 @@ This HW 16-ch i2c servo driver PCA9685:
 
 To interact with the controller can be used:
 
-**Debian Linux**:
+**Linux**:
 
 `sudo apt-get install screen` 
 
@@ -41,4 +41,10 @@ for calibrate all servo ch use this command:
 
 **Android app**:
 https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
+
+Video demonstration (OpenWRT + u-servo):
+https://www.youtube.com/watch?v=p_3rx9Ga9Vs
+
+
+
 
