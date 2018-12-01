@@ -20,10 +20,15 @@ This HW 16-ch i2c servo driver PCA9685:
 
 
 To interact with the controller can be used:
+
 **Debian Linux**:
+
 `sudo apt-get install screen` 
+
 than
+
 `screen /dev/ttyUSB@ 9600` <-- replace `@` sign with your USB device number `ls /dev/ttyUSB*` !
+
 than press `CTRL+a+k` and `y` to return to the console
 
 send command like this:
