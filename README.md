@@ -3,10 +3,11 @@ arduino uart Servo server )
 
 This project is used:
 
-https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
+- Adafruit Servo Library: https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
+
+- This 3D Models: https://www.thingiverse.com/thing:1694918
 
 and 
-
 
 This HW 16-ch i2c servo driver PCA9685:
 
