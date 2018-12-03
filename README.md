@@ -9,7 +9,7 @@ This project is used:
 
 and 
 
-This HW 16-ch i2c servo driver PCA9685:
+- This HW 16-ch i2c servo driver PCA9685:
 
 ![image](https://github.com/sw3nlab/u-servo/blob/master/img.png)
 
