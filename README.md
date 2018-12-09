@@ -69,3 +69,4 @@ https://www.youtube.com/watch?v=p_3rx9Ga9Vs
 echo 2-2:1.0>/sys/bus/usb/drivers/ch341/unbind
 echo 2-2:1.0>/sys/bus/usb/drivers/ch341/bind
 ```
+[2-2:1.0] - необходимо заменить на свои идентификаторы usb устройств
