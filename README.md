@@ -1,53 +1,63 @@
 # u-servo
-arduino uart Servo server )
+Роботизированая рука на сервоприводах `MG996R` с возможностью удалённого управления через интернет и формированием своих списков команд.
 
-This project is used:
+В проекте используется:
 
-- Adafruit Servo Library: https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
+- Wi-Fi роутер с прошивкой OpenWRT/LEDE: https://openwrt.org 
 
-- This 3D Models: https://www.thingiverse.com/thing:1694918
+- Библиотека Adafruit Servo Library: https://github.com/adafruit/Adafruit-PWM-Servo-Driver-Library
 
-and 
+- 3D модели: https://www.thingiverse.com/thing:1694918
 
-- This HW 16-ch i2c servo driver PCA9685:
+а так же: 
+
+- Arduino NANO v3 (китайский клон от robotdyn на чипе ch340)
+
+- 16 канальный драйвер сервоприводов PCA9685
 
 ![image](https://github.com/sw3nlab/u-servo/blob/master/img.png)
 
 
-**How to**
-1) Download the sketch `main.ino` to arduino controller.
-2) Connect the controller to the `PCA9685` servo module. (as in the picture above)
-3) use an external 5 volt power supply to power the PCA9685 !!!
+**Для тех кто хочет повторить...**
+>
+1) Загрузите скетч `main.ino` в свой arduino контроллер.
+2) Подключите Arduino контроллер к драйверу сервоприводов `PCA9685` . (как показано на рисунке выше)
+3) Для питания драйвера сервоприводов необходимо использовать внешний источник питания на 5 вольт , например Powerbank.
 
 
-To interact with the controller can be used:
+Для взаимодействия с контроллером можно использовать:
 
 **Linux**:
+>
+Утилита `screen`:
 
 `sudo apt-get install screen` 
 
-than
+после её установки можно подключится к контроллеру
 
-`screen /dev/ttyUSB@ 9600` <-- replace `@` sign with your USB device number `ls /dev/ttyUSB*` !
+`screen /dev/ttyUSB@ 9600` <-- заменить `@` на свой номер девайса (его можно уточнить командой `ls /dev/ttyUSB*`)
 
-than press `CTRL+a+d` and `y` to return to the console
+Если всё сделано правильно вы увидите приветствие контроллера: **u-Servo ready !** 
 
-send command like this:
+можно отключатся от девайса командой `CTRL+a+d` и `y` чтобы вырнутся в консоль.
 
-`echo "send 0,250">/dev/ttyUSB@` <-- servo on channel 0 take position 250
+Для отправки комманд контроллеру используйте :
 
-for calibrate all servo ch use this command:
+`echo "send 0,250">/dev/ttyUSB@` <-- сервопривод на канале 0, принять положение 250
 
-`echo "cntr">/dev/ttyUSB@|cat /dev/ttyUSB@` <-- all servos will take position 300
+для выравнивания всех сервоприводов в одно положение (калибровки) существует команда `cntr`:
+
+`echo "cntr">/dev/ttyUSB@|cat /dev/ttyUSB@` <-- сервоприводы на всех каналах по очереди будут принимать положение 300
 
 **Android app**:
+>
+Android Serial Терминал для взаимодействия с контроллером:
 
 https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
 
-Video demonstration (OpenWRT + u-servo):
-
+**Video demonstration (OpenWRT + u-servo):**
+>
 https://www.youtube.com/watch?v=p_3rx9Ga9Vs
-
 
 
 
