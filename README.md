@@ -60,4 +60,12 @@ https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
 https://www.youtube.com/watch?v=p_3rx9Ga9Vs
 
 
+==============BUGS===============ИЗВЕСТНЫЕ ОШИБКИ==============BUGS===============
+1) Зависание контроллера (это связано с криво написаной прошивкой контроллера, косяки в преобразовании типов данных, примитивном ветвлении else if'ом или задержкой) 
 
+иногда можно вылечить программно передёрнув usb девайс так:
+
+```cpp
+echo 2-2:1.0>/sys/bus/usb/drivers/ch341/unbind
+echo 2-2:1.0>/sys/bus/usb/drivers/ch341/bind
+```
